@@ -1,0 +1,59 @@
+body {
+  background-image: url(../images/sativa.png);
+}
+
+nav ul li {
+  list-style: none;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+}
+
+nav li {
+  margin: 16px;
+}
+
+a {
+    text-decoration: none;
+}
+
+hr {
+    margin-bottom: 48px;
+}
+
+.container {
+  width: 960px;
+  margin: 80px auto;
+  background-color: white;
+  padding-top: 20px;
+}
+
+.title, footer {
+  text-align: center;
+}
+
+main {
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+footer {
+    background-color: #333;
+    padding: 12px;
+    color: white;
+}
+
+article {
+    background-color: #eee;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+section {
+    background-color: #d3ecf3;
+    padding: 16px;
+}

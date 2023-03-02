@@ -5,9 +5,90 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HTML Semantic</title>
+    <link rel="stylesheet" href="../assets/css/semantic.css" />
   </head>
   <body>
-    <h1 style="text-align: center">HTML Semantic</h1>
-    <br />
+    <div class="container">
+      <!-- HEADER -->
+      <header>
+        <h1 class="title">HTML Semantic Elements</h1>
+        <nav>
+          <ul>
+            <li><a href="../index.html">Index</a></li>
+            <li><a href="5-table.html">Table</a></li>
+            <li><a href="6-media.html">Media</a></li>
+            <li><a href="7-form.html">Form</a></li>
+          </ul>
+        </nav>
+      </header>
+      <br />
+
+      <hr />
+
+      <!-- MAIN -->
+      <main>
+        <article>
+          <section>
+            <h2>What are Semantic Elements?</h2>
+            <p>
+              A semantic element clearly describes its meaning to both the
+              browser and the developer.
+            </p>
+            <p>
+              Examples of <strong>non-semantic</strong> elements:
+              <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code> - Tells
+              nothing about its content.
+            </p>
+            <p>
+              Examples of <strong>semantic</strong> elements:
+              <code>&lt;form&gt;</code>, <code>&lt;table&gt;</code>, and
+              <code>&lt;article&gt;</code> - Clearly defines its content.
+            </p>
+          </section>
+          <section>
+            <h2>Semantic Elements in HTML</h2>
+            <p>
+              Many web sites contain HTML code like: &lt;div id="nav"&gt;
+              &lt;div class="header"&gt; &lt;div id="footer"&gt; to indicate
+              navigation, header, and footer.
+            </p>
+            <p>
+              In HTML there are some semantic elements that can be used to
+              define different parts of a web page:
+            </p>
+            <div style="width: 374px; float: left">
+              <ul>
+                <li>&lt;article&gt;</li>
+                <li>&lt;aside&gt;</li>
+                <li>&lt;details&gt;</li>
+                <li>&lt;figcaption&gt;</li>
+                <li>&lt;figure&gt;</li>
+                <li>&lt;footer&gt;</li>
+                <li>&lt;header&gt;</li>
+                <li>&lt;main&gt;</li>
+                <li>&lt;mark&gt;</li>
+                <li>&lt;nav&gt;</li>
+                <li>&lt;section&gt;</li>
+                <li>&lt;summary&gt;</li>
+                <li>&lt;time&gt;</li>
+              </ul>
+            </div>
+            <div style="width: 260px; float: left; margin-bottom: 15px">
+              <img
+                alt="HTML Semantic Elements"
+                src="../assets/images/img_sem_elements.gif"
+                width="219"
+                height="258"
+              />
+            </div>
+          </section>
+        </article>
+      </main>
+
+      <br /><br /><br />
+
+      <!-- FOOTER -->
+      <footer>Copyright &copy; 2023 FSWD 1 Arkatama</footer>
+    </div>
   </body>
 </html>
