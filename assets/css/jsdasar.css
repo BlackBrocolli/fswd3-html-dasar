@@ -1,0 +1,21 @@
+.container {
+  max-width: 960px;
+  margin: auto;
+  margin-top: 96px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.card {
+  border: 1px solid black;
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
