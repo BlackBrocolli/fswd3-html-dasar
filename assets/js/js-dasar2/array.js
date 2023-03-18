@@ -1001,7 +1001,7 @@ let students = [
     { id: 999, name: "Christeen Paris", gender: "M", score: 82 },
   ];
 
-// FILTER MAHASISWA BERDASARKAN GENDER-----------------------------------------------------
+// FILTER DAN PISAHKAN MAHASISWA BERDASARKAN GENDER-----------------------------------------------------
 // == CARA 1 ==
 const femaleStudents = students.filter(getFemaleStudents);
 
