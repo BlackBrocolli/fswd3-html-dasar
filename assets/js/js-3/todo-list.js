@@ -1,17 +1,30 @@
+// TODO LIST WITH FETCH API
+
+const baseURL = `https://crudcrud.com/api/`;
+const apiKey = "28845251e290422790c2555804539c4e";
+const url = baseURL + apiKey;
+const endpointTodo = `${url}/todo`;
+const endpointNama = `${url}/nama`;
+
+let todos;
+
+// == GET ==
+const getLists = () => {
+    fetch(endpointTodo)
+    .then(result => result.json())
+    .then(data => {
+        todos = [];
+        todos.push(...data);
+        displayTodos();
+    })
+    .catch((error) => console.log(error));
+}
+
 window.addEventListener('load', () => {
-    // tanpa menulis let atau const membuat variabel todos global
-    todos = JSON.parse(localStorage.getItem('todos')) || []; // ambil item/todo listnya dengan key 'todos'
-
-    const nameInput = document.querySelector('#name');
-    const newTodoForm = document.querySelector('#new-todo-form');
-
-    const username = localStorage.getItem('username') || ""; // ambil item dengan key 'username'
-    nameInput.value = username;
     
-    // jika ada perubahan pada inputan nama, simpan item ke localStorage
-    nameInput.addEventListener('change', e => {
-        localStorage.setItem('username', e.target.value);
-    });
+    getLists();
+
+    const newTodoForm = document.querySelector('#new-todo-form');
 
     newTodoForm.addEventListener('submit', e => {
         // preventDefault disini mencegah perilaku default dari form
@@ -19,37 +32,36 @@ window.addEventListener('load', () => {
         // sehingga halaman web tidak akan memuat ulang saat form dikirimkan.
         e.preventDefault(); 
 
-        // object todo yang akan disimpan ke localStorage
+        // object todo yang akan disimpan
         const todo = {
             content: e.target.elements.content.value, // mengambil value dari elemen target dengan nama 'content'
             category: e.target.elements.category.value,
             done: false,
-            createdAt: new Date().getTime()
+            // createdAt: new Date().getTime()
         };
 
-        // update isi todos array dengan cara
-        // push object todo ke dalam array todos
-        todos.push(todo);
-
-        // lalu simpan array todos tadi ke dalam localStorage
-        localStorage.setItem('todos', JSON.stringify(todos));
-        /* 
-        localStorage hanya memperbolehkan untuk menyimpan data primitive
-        sehingga untuk menyimpan array/object, digunakanlah
-        JSON.stringify untuk mengubah array/object tsb menjadi string
-        */
+        // == POST ==
+        fetch(endpointTodo, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(todo)
+        })
+        .then(result => result.json())
+        .then(data => {
+            getLists();
+        })
+        .catch(error => console.error(error));
 
         // setelah semua proses selesai
         // reset form (field-field di dalamnya)
         e.target.reset();
-
-        displayTodos();
     });
-
-    displayTodos();
 });
 
 function displayTodos() {
+
     const todoList = document.querySelector('#todo-list');
 
     // pertama, bersihkan dulu semua isi dari elemen todoList
@@ -57,7 +69,7 @@ function displayTodos() {
 
     // untuk setiap item pada array todos
     // create element-element berikut
-    todos.sort((a, b) => a.createdAt - b.createdAt).forEach(todo => {
+    todos.forEach(todo => {
 
         // cara menambahkan element lewat JS
         // 1. create element
@@ -112,18 +124,27 @@ function displayTodos() {
         // berikan eventListener kepada checkbox
         // jika checkbox diklik
         input.addEventListener('click', e => {
-            // update properti done lalu simpan
-            todo.done = e.target.checked; // true or false
-            // setiap kali terjadi perubahan, kita simpan ke localStorage
-            localStorage.setItem('todos', JSON.stringify(todos));
 
-            if (todo.done) {
-                todoItem.classList.add('done');
-            } else {
-                todoItem.classList.remove('done');
-            }
+            // == PUT ==
+            const data = {
+                content: todo.content,
+                category: todo.category,
+                done: e.target.checked,
+            };
 
-            displayTodos();
+            fetch(`${endpointTodo}/${todo._id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(result => {
+                getLists();
+            })
+            .catch((error) => console.log(error));
+
+            todoItem.classList.toggle('done');
         });
 
         editButton.addEventListener('click', e => {
@@ -134,18 +155,43 @@ function displayTodos() {
             // eventListener blur(kehilangan fokus) pada inputField
             input.addEventListener('blur', e => {
                 input.setAttribute('readonly', true);
-                todo.content = e.target.value; // set atribut content dengan value hasil edit tadi
+                /* todo.content = e.target.value; // set atribut content dengan value hasil edit tadi
                 localStorage.setItem('todos', JSON.stringify(todos)); // simpan perubahan
-                displayTodos();
+                displayTodos(); */
+
+                // == PUT ==
+
+                const data = {
+                    content: e.target.value,
+                    category: todo.category,
+                    done: todo.done,
+                };
+
+                fetch(`${endpointTodo}/${todo._id}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(result => getLists())
+                .catch((error) => console.log(error));
             });
         });
 
         deleteButton.addEventListener('click', e => {
-            // filter array todos, isi array baru dengan elemen yang != elemen yg diklik
-            // sehingga menghilangkan elemen 'todo' yang diklik sekarang dari array
-            todos = todos.filter(t => t != todo); // cek tiap elemen 't' dengan elemen 'todo' yg sekarang
-            localStorage.setItem('todos', JSON.stringify(todos));
-            displayTodos();
+            
+            // == DELETE ==
+            fetch(`${endpointTodo}/${todo._id}`, {
+                method: "DELETE"
+            })
+            .then(data => {
+                // filter array todos, isi array baru dengan elemen yang != elemen yg diklik
+                // sehingga menghilangkan elemen 'todo' yang diklik sekarang dari array
+                todos = todos.filter(t => t != todo);
+                displayTodos();
+            })
+            .catch((error) => console.log(error));
         });
     });
 }
