@@ -1,7 +1,7 @@
 // TODO LIST WITH FETCH API
 
 const baseURL = `https://crudcrud.com/api/`;
-const apiKey = "28845251e290422790c2555804539c4e";
+const apiKey = "d6a4aad1d0564a1aad7c66c236f20dea";
 const url = baseURL + apiKey;
 const endpointTodo = `${url}/todo`;
 const endpointNama = `${url}/nama`;
