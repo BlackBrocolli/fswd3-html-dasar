@@ -13,7 +13,7 @@ const getLists = () => {
     fetch(endpointTodo)
     .then(result => result.json())
     .then(data => {
-        todos = [];
+        todos = []; // kosongin array todos sebelum masukin ulang datanya
         todos.push(...data);
         displayTodos();
     })

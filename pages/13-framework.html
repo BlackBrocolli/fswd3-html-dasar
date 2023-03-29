@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Framework</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    <style>
+      @media screen and (max-width: 576px) {
+        .card {
+          position: relative;
+        }
+
+        .card-content {
+          position: absolute;
+          bottom: 56px;
+          z-index: 1;
+          background-color: rgba(0, 0, 0, 0.5);
+          color: #fff;
+          bottom: 4.5rem;
+          left: 0;
+          padding: 0.75rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="container-sm d-flex flex-column flex-sm-row align-items-center px-5 py-3 justify-content-around fw-semibold"
+    >
+      <a class="navbar-brand mb-3 mb-sm-0" href="#">Logo</a>
+      <ul class="nav flex-column flex-sm-row text-center">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+    </div>
+
+    <div
+      class="container-fluid bg-info justify-content-center d-sm-flex d-none py-3"
+    >
+      <header>
+        <span>
+          <h2>Blogku</h2>
+          <p>
+            Blogku adalah blog yang berisi tutorial dan informasi seputar dunia
+            pemrograman
+          </p>
+        </span>
+      </header>
+    </div>
+
+    <div class="container-fluid p-3" style="background-color: #eee">
+      <div class="row">
+        <div class="col-md-10">
+          <div>
+            <div>
+              <h5>Artikelku</h5>
+              <p>Artikel seputar website</p>
+            </div>
+
+            <div class="m-4 d-sm-flex gap-3">
+              <div class="card mb-3 mb-sm-0">
+                <img
+                  src="../assets/images/html.jpg"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <div class="card-content">
+                    <h5 class="card-title">Belajar HTML</h5>
+                    <p class="card-text">
+                      Belajar HTML adalah hal yang sangat penting untuk menjadi
+                      seorang web developer
+                    </p>
+                  </div>
+                  <a href="#" class="btn btn-primary mt-sm-3"
+                    >Baca selengkapnya</a
+                  >
+                </div>
+              </div>
+
+              <div class="card mb-3 mb-sm-0">
+                <img
+                  src="../assets/images/html.jpg"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <div class="card-content">
+                    <h5 class="card-title">Belajar HTML</h5>
+                    <p class="card-text">
+                      Belajar HTML adalah hal yang sangat penting untuk menjadi
+                      seorang web developer
+                    </p>
+                  </div>
+                  <a href="#" class="btn btn-primary mt-sm-3"
+                    >Baca selengkapnya</a
+                  >
+                </div>
+              </div>
+
+              <div class="card mb-3 mb-sm-0">
+                <img
+                  src="../assets/images/html.jpg"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <div class="card-content">
+                    <h5 class="card-title">Belajar HTML</h5>
+                    <p class="card-text">
+                      Belajar HTML adalah hal yang sangat penting untuk menjadi
+                      seorang web developer
+                    </p>
+                  </div>
+                  <a href="#" class="btn btn-primary mt-sm-3"
+                    >Baca selengkapnya</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div>
+            <h5>Artikelku</h5>
+            <p>Artikel seputar website</p>
+          </div>
+          <ul class="nav flex-column fw-semibold">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Belajar HTML</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Belajar CSS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Belajar Javascript</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Belajar PHP</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Belajar MySQL</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="../assets/js/bootstrap.min.js"></script>
+  </body>
+</html>
